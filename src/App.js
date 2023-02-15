@@ -5,15 +5,13 @@ import useAPI, { TYPES } from "./hooks/useAPI";
 function App() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [data, handleOperation] = useAPI();
+  const [data, handleOperation] = useAPI("http://localhost:2000/todo");
 
   useEffect(() => {
     console.log("Data", data);
   }, [data]);
 
   const handleCreate = () => {
-    console.log(title);
-    console.log(content);
     const payload = {
       title,
       content,
@@ -23,7 +21,7 @@ function App() {
   const handleUpdate = (id) => {
     const payload = {
       id,
-      updatedData: {
+      updateData: {
         title,
         content,
       },
